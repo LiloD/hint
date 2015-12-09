@@ -43,6 +43,7 @@
                                 break;
                             case 13:
                                 $scope.list = [];
+                                $scope.selected = -1;
                                 break;
                         }
                     }
@@ -50,6 +51,7 @@
                     $scope.click = function(idx){
                         $scope.attach(idx);
                         $scope.list = []; 
+                        $scope.selected = -1;
                     }
 
                     $scope.search = function(query) {
