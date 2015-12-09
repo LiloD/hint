@@ -1,4 +1,4 @@
-/*for suggestion list*/
+/*for hint list*/
 
 .hint-wrapper {
     position: relative;
@@ -11,6 +11,8 @@
 }
 
 .hint-list {
+    background-color: white;
+    opacity: 0.9;
     list-style-type: none;
     position: absolute;
     border: 1px solid #e5e9ef;
