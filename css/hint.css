@@ -6,13 +6,13 @@
 }
 
 .search-input {
-    min-width: 240px;
-    max-width: 300px;
+    /*min-width: 240px;
+    max-width: 300px;*/
 }
 
 .hint-list {
     background-color: white;
-    opacity: 0.9;
+    /*opacity: 0.9;*/
     list-style-type: none;
     position: absolute;
     border: 1px solid #e5e9ef;
@@ -20,8 +20,9 @@
     z-index: 10000;
     top: 30px;
     padding: 5px;
-    min-width: 240px;
-    max-width: 300px;
+    /*min-width: 240px;
+    max-width: 300px;*/
+    width: 100%;
     box-shadow: 0px 3px 3px #f2f2f2;
 }
 
