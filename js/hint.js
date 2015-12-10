@@ -7,7 +7,7 @@
                     info: '='
                 },
                 templateUrl: 'hint.html',
-                controller: ['$scope', '$http', function($scope, $http) {
+                controller: ['$scope', '$http', '$q', function($scope, $http, $q) {
                     $scope.list = [];
 
                     $scope.selected = -1;
@@ -27,18 +27,18 @@
                                 e.preventDefault();
 
                                 $scope.selected--;
-                                if($scope.selected < 0);
-                                    $scope.selected = $scope.list.length - 1;
+                                if ($scope.selected < 0);
+                                $scope.selected = $scope.list.length - 1;
 
                                 $scope.attach($scope.selected);
                                 break;
                             case 40:
                                 e.preventDefault();
-                                
+
                                 $scope.selected++;
-                                if($scope.selected == $scope.list.length)
+                                if ($scope.selected == $scope.list.length)
                                     $scope.selected = 0;
-                                
+
                                 $scope.attach($scope.selected);
                                 break;
                             case 13:
@@ -48,14 +48,21 @@
                         }
                     }
 
-                    $scope.click = function(idx){
+                    $scope.click = function(idx) {
                         $scope.attach(idx);
-                        $scope.list = []; 
+                        $scope.list = [];
                         $scope.selected = -1;
                     }
 
                     $scope.search = function(query) {
-                        $scope.list = $scope.info.fetch(query);
+                        if (!query) return;
+
+                        $q.when($scope.info.fetch(query), function(value) {
+                            if (!value) $scope.list = [];
+                            $scope.list = value.data || value;
+                        }, function(err) {
+                            $scope.list = [];
+                        })
                     }
                 }]
             }
