@@ -1,7 +1,6 @@
 <div class="hint-wrapper">
-    <form>
-        <input type="text" class="search-input" ng-model="info.q" ng-model-options="{ debounce: 300 }" ng-change="search(info.q)" ng-keydown="keydown($event)" ng-focus="search(info.q)">
-    </form>
+    <input type="text" class="form-control search-input" ng-model="info.q" ng-model-options="{ debounce: 300 }" ng-change="search(info.q)" ng-keydown="keydown($event)" ng-focus="search(info.q)">
+    
     <ul ng-show="!!info.q && list.length > 0" class="hint-list">
         <li ng-repeat="ent in list" ng-mouseover="mouseover($index)" ng-class="{selected: $index == selected}" ng-click="click($index)">{{ent}}</li>
     </ul>
