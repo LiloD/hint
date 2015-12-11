@@ -9,7 +9,8 @@ search input with hint functionality using AngularJS
 ```
   ...
   scope: {
-      info: '='
+      data: '=',              
+      fetch: '='
   },
   templateUrl: 'hint.html',     //make sure the url here is correct
   controller: ['$scope', '$http', '$q', function($scope, $http, $q) {
@@ -18,12 +19,21 @@ search input with hint functionality using AngularJS
 * 5.add module 'hint' in your angular module like
   ```angluar.module('app', ['hint']);```
 * 6.create hint directive
-  ```<hint info="your_info"></hint>```
-* 7.the structure info for your search hint 
+  ```<hint data="your_data" fetch="your_fetch_func"></hint>```
+* 7.for `data` in hint 
 ```
-  info = {
-    q: '',                    // the value in the input 
-    fetch: function(query){}  // callback function to fetch your hint data given query
-                              // you can directly return a promise
+  data = {
+    q : ''  //this is where your data stored
+  }
+```
+* 8.for `fetch` in hint
+  
+  hint expect the fetch function to return a hints list which is a javascript array
+  
+  you can also return a promise like this
+```
+  $scope.fetch = function(q){
+    if(!q) return [];
+    return $http.get('url', { params: {query: q} });
   }
 ```
