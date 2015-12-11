@@ -27,11 +27,13 @@ search input with hint functionality using AngularJS
   }
 ```
 * 8.for `fetch` in hint
+  
   hint expect the fetch function to return a hints list which is a javascript array
+  
   you can also return a promise like this
 ```
   $scope.fetch = function(q){
     if(!q) return [];
-    return $http.get('/it', { params: {query: q} });
+    return $http.get('url', { params: {query: q} });
   }
 ```
