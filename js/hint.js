@@ -7,8 +7,7 @@
                     data: '=',
                     fetch: '='
                 },
-                templateUrl: '<div class="hint-wrapper"><input type="text" class="form-control search-input" ng-model="data" ng-model-options="{ debounce: 300 }" ng-change="search(data)" ng-blur="list=[]" ng-keydown="keydown($event)" ng-focus="search(data)"><ul ng-show="!!data && list.length > 0" class="hint-list">
-                            <li ng-repeat="ent in list" ng-mouseover="mouseover($index)" ng-class="{selected: $index == selected}" ng-click="click($index)">{{ent}}</li></ul></div>',                            
+                templateUrl: '<div class="hint-wrapper"><input type="text" class="form-control search-input" ng-model="data" ng-model-options="{ debounce: 300 }" ng-change="search(data)" ng-blur="list=[]" ng-keydown="keydown($event)" ng-focus="search(data)"><ul ng-show="!!data && list.length > 0" class="hint-list"><li ng-repeat="ent in list" ng-mouseover="mouseover($index)" ng-class="{selected: $index == selected}" ng-click="click($index)">{{ent}}</li></ul></div>',                            
                 controller: ['$scope', '$http', '$q', function($scope, $http, $q) {
                     $scope.list = [];
 
