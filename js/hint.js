@@ -7,14 +7,15 @@
                     data: '=',
                     fetch: '='
                 },
-                templateUrl: 'hint.html',
+                templateUrl: '<div class="hint-wrapper"><input type="text" class="form-control search-input" ng-model="data" ng-model-options="{ debounce: 300 }" ng-change="search(data)" ng-blur="list=[]" ng-keydown="keydown($event)" ng-focus="search(data)"><ul ng-show="!!data && list.length > 0" class="hint-list">
+                            <li ng-repeat="ent in list" ng-mouseover="mouseover($index)" ng-class="{selected: $index == selected}" ng-click="click($index)">{{ent}}</li></ul></div>',                            
                 controller: ['$scope', '$http', '$q', function($scope, $http, $q) {
                     $scope.list = [];
 
                     $scope.selected = -1;
 
                     $scope.attach = function(idx) {
-                        $scope.data.q = $scope.list[idx];
+                        $scope.data = $scope.list[idx];
                     }
 
                     $scope.mouseover = function(idx) {
@@ -28,8 +29,8 @@
                                 e.preventDefault();
 
                                 $scope.selected--;
-                                if ($scope.selected < 0);
-                                $scope.selected = $scope.list.length - 1;
+                                if ($scope.selected < 0)
+                                    $scope.selected = $scope.list.length - 1;
 
                                 $scope.attach($scope.selected);
                                 break;
